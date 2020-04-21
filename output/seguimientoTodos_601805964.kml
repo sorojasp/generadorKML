@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>KML Samples</name>
+    <open>1</open>
+    <description>Unleash your creativity with the help of these examples!</description>
+    <Style id="downArrowIcon">
+      <IconStyle>
+        <Icon>
+          <href>http://maps.google.com/mapfiles/kml/pal4/icon28.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="globeIcon">
+      <IconStyle>
+        <Icon>
+          <href>http://maps.google.com/mapfiles/kml/pal3/icon19.png</href>
+        </Icon>
+      </IconStyle>
+      <LineStyle>
+        <width>2</width>
+      </LineStyle>
+    </Style>
+ <Style id="0">
+ <LineStyle>
+ <color>FF31CBDA</color>
+ <width>2</width>
+ </LineStyle>
+ <PolyStyle>
+ <color>FF2ED4FF</color>
+ </PolyStyle>
+ </Style>
+   <Folder>
+      <name>Placemarks</name>
+      <description>These are just some of the different kinds of placemarks with
+        which you can mark your favorite places</description>
+      <LookAt>
+        <longitude>-122.0839597145766</longitude>
+        <latitude>37.42222904525232</latitude>
+        <altitude>0</altitude>
+        <heading>-148.4122922628044</heading>
+        <tilt>40.5575073395506</tilt>
+        <range>500.6566641072245</range>
+      </LookAt>
+<Placemark>
+ <name>pi</name>
+ <description>punto Inicial</description>
+ <Point>
+ <coordinates>  -74.048,4.70155,0 </coordinates>
+ </Point> 
+</Placemark>
+ <Placemark>
+ <name>Relieve absoluto</name>
+ <description>Pared verde transparente con contornos amarillos</description>
+ <styleUrl>#0</styleUrl>
+ <LineString>
+ <extrude>1</extrude>
+ <tessellate>1</tessellate>
+ <altitudeMode>absoluto</altitudeMode>
+ <coordinates>  -74.0477,4.70012,0 -74.048,4.70019,0 -74.0481,4.70004,0 -74.0474,4.698,0 -74.048,4.69967,0 -74.0474,4.699,0 -74.0471,4.69789,0 -74.0469,4.69793,0 -74.0467,4.69895,0 -74.0466,4.69918,0 -74.0469,4.69949,0 -74.047,4.69951,0 -74.0465,4.69996,0 -74.0463,4.70096,0 -74.0463,4.70114,0 -74.047,4.70136,0 -74.048,4.70155,0s  </coordinates> 
+ </LineString> 
+  </Placemark>
+
+<Placemark>
+ <name>pf</name>
+ <description>puntoFinal</description>
+ <Point>
+ <coordinates>  -74.0477,4.70012,0 </coordinates>
+ </Point> 
+</Placemark>
+      </Folder>  
+  </Document>
+</kml>
+
+

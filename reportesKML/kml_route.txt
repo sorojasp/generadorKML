@@ -1,0 +1,11 @@
+ <Placemark>
+ <name>Relieve absoluto</name>
+ <description>Pared verde transparente con contornos amarillos</description>
+ <styleUrl>#nombreEstilo</styleUrl>
+ <LineString>
+ <extrude>1</extrude>
+ <tessellate>1</tessellate>
+ <altitudeMode>absoluto</altitudeMode>
+ <coordinates> coordenadas  </coordinates> 
+ </LineString> 
+  </Placemark>

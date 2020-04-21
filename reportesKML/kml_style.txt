@@ -1,0 +1,9 @@
+ <Style id="idEstiloColor">
+ <LineStyle>
+ <color>colorKML</color>
+ <width>2</width>
+ </LineStyle>
+ <PolyStyle>
+ <color>FF2ED4FF</color>
+ </PolyStyle>
+ </Style>

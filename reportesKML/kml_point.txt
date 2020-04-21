@@ -1,0 +1,7 @@
+<Placemark>
+ <name>nombrePunto</name>
+ <description>descripcionPunto</description>
+ <Point>
+ <coordinates> coordenada </coordinates>
+ </Point> 
+</Placemark>

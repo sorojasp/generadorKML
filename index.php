@@ -114,8 +114,9 @@ if($result2){
 
   
 
+  if($contadorPuntos>1){
 $kmlBuilder->addRoute("pi"." movil:".$movil,"punto Inicial","pf"." movil:".$movil,"puntoFinal",$rutaSupervisor,$contadorRutas,$puntoInicial,$puntoFinal);
-
+}
 
 
 }else{

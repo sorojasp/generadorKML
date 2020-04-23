@@ -164,7 +164,7 @@ class KMLBuilder extends ReporteBuilder {
 
         //if($this->contadorRutasEscritas<($this->cantidadRutas-1)){
             if(true){ 
-            echo"entra al condicional";
+            
         
         
         

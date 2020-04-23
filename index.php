@@ -18,7 +18,7 @@ include './KMLBuilder.php';
 
 
 
-$fechas="2019-07-05 01:02:03;2019-07-05 1:10:08";
+$fechas="2019-07-05 01:02:03;2019-07-05 2:10:08";
 
 
 
@@ -31,7 +31,7 @@ $fechaBusqueda=explode(";",$fechas);
 $supervisores=null;
 
 $supervisores=obneterSupervisores($link);
-
+echo sizeof($supervisores);
 
 
 
@@ -49,40 +49,33 @@ $rutaSupervisor=null;
 
 
 
-$kmlBuilder=new KMLBuilder(1,$rutaReporte.$archivo);
+$kmlBuilder=new KMLBuilder(sizeof($supervisores),$rutaReporte.$archivo);
+
 $kmlBuilder->addHeader();
 $kmlBuilder->addStyles();
+$kmlBuilder->addElementosIntermedios();
 
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
- //foreach($supervisores as $supervisor){ //ciclo para buscar las ubicaciones de los supervisores
+$contadorRutas=0;
+ foreach($supervisores as $supervisor){ //ciclo para buscar las ubicaciones de los supervisores
    //echo "sub: ".$supervisor;
    
-   //$movil=explode(";",$supervisor)[0];
-   
-   $movil=2;
+   $movil=explode(";",$supervisor)[0];
+
+   echo "<br>";
+   echo "movil:".$movil;
+   echo "<br>";
+   //$movil=11;
    
   
 
 
-  // $query = "SELECT tbl_seguimiento.*, Nombres, Apellidos FROM tbl_seguimiento INNER JOIN tbl_usuarios ON tbl_seguimiento.movil=tbl_usuarios.movil WHERE tbl_seguimiento.movil='$movil' AND fecha_hora between '".$fechai." ".$horai.":".$mini.":00' AND '".$fechaf." ".$horaf.":".$minf.":00' ORDER BY fecha_hora";
-  $query2 = "SELECT tbl_seguimiento.*, Nombres, Apellidos FROM tbl_seguimiento INNER JOIN tbl_usuarios ON tbl_seguimiento.movil=tbl_usuarios.movil WHERE tbl_seguimiento.movil='".$movil."' AND fecha_hora between '".$fechaBusqueda[0]."' AND '".$fechaBusqueda[1]."'  ORDER BY fecha_hora DESC ";
+ 
+  $query2 = "SELECT tbl_seguimiento.*, Nombres, Apellidos FROM tbl_seguimiento INNER JOIN tbl_usuarios ON tbl_seguimiento.movil=tbl_usuarios.movil WHERE tbl_seguimiento.movil='".$movil."' AND fecha_hora between '".$fechaBusqueda[0]."' AND '".$fechaBusqueda[1]."'ORDER BY fecha_hora  DESC  ";
   $result2=null;
   echo $query2;
   //echo "<br>";
@@ -110,7 +103,7 @@ if($result2){
     }
 
 
-    $rutaSupervisor=$rutaSupervisor." ".$row["longitud"].",".$row["latitud"].","."0";
+    $rutaSupervisor=$rutaSupervisor." ".$row["longitud"].",".$row["latitud"].","."0"." ";
     //echo " ".$row["longitud"].",".$row["latitud"].","."0";
     echo "<br>";
     echo $rutaSupervisor;
@@ -118,6 +111,13 @@ if($result2){
    $contadorPuntos=$contadorPuntos+1;
     
   }
+
+  
+
+$kmlBuilder->addRoute("pi"." movil:".$movil,"punto Inicial","pf"." movil:".$movil,"puntoFinal",$rutaSupervisor,$contadorRutas,$puntoInicial,$puntoFinal);
+
+
+
 }else{
   
 }
@@ -126,15 +126,17 @@ if($result2){
 //echo "puntoFinal: ".$puntoFinal;
 //echo "<br>";
 
-$kmlBuilder->addElementosIntermedios();
 
-$kmlBuilder->addRoute("pi","punto Inicial","pf","puntoFinal",$rutaSupervisor,"0",$puntoInicial,$puntoFinal);
+//addRoute($nombrePuntoInicial_,$descripcionPuntoInicial_,$nombrePuntoFinal_,$descripcionPuntoFinal_,$coordenadas_,$estiloCoordenada_,$coordenadaInicial_,$coordenadaFinal_)
+
+
+
 $rutaSupervisor=null;
 $result2=null;
 $puntoFinal=null;
 $puntoInicial=null;
 
-$kmlBuilder->addFooter();
+
 
 
 }
@@ -142,9 +144,10 @@ $kmlBuilder->addFooter();
 
 //echo "rutaSupervisor: ".$rutaSupervisor;
     
- //}//cierre de ciclo para hacer las consultas de los puntos de los supervisores
+$contadorRutas=$contadorRutas+1;
+ }//cierre de ciclo para hacer las consultas de los puntos de los supervisores
 
-
+ $kmlBuilder->addFooter();
 
  
 
@@ -189,15 +192,6 @@ if (!mysqli_connect_errno())
 
 
 
-
-
-
-
-$facColor= new FactoryGeneradorColores();
-
-$generadorColores= $facColor->obtenerGeneradorColores("KML", 8);
-
-echo $generadorColores->generarColores()[0];
 
 
 
